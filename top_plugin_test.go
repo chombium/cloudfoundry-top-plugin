@@ -13,14 +13,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package main_test
+package main
 
 import (
 	"strings"
 
-	io_helpers "code.cloudfoundry.org/cli/util/testhelpers/io"
-	"github.com/cloudfoundry/cli/plugin/pluginfakes"
-	"github.com/cloudfoundry/firehose-plugin/testhelpers"
+	io_helpers "code.cloudfoundry.org/cli/v9/cf/util/testhelpers/io"
+	"code.cloudfoundry.org/cli/v9/plugin/pluginfakes"
+	"github.com/cloudfoundry-community/firehose-plugin/testhelpers"
 
 	"github.com/cloudfoundry/sonde-go/events"
 	. "github.com/ecsteam/cloudfoundry-top-plugin"

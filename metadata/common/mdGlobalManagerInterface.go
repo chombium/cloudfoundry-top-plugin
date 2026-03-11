@@ -15,7 +15,7 @@
 
 package common
 
-import "code.cloudfoundry.org/cli/plugin"
+import "code.cloudfoundry.org/cli/v9/plugin"
 
 type MdGlobalManagerInterface interface {
 	GetCliConnection() plugin.CliConnection

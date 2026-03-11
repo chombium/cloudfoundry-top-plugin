@@ -223,12 +223,11 @@ func (ed *EventData) logApiCall(msg *events.Envelope) {
 		return
 	}
 
-	// fields, err := jsonParsed.ChildrenMap()
-	// if err != nil {
-	// 	toplog.Error("ParseJSON err: %v payload: %v", err, payload)
-	// 	return
-	// }
-	fields := jsonParsed.ChildrenMap()
+	fields, err := jsonParsed.ChildrenMap()
+	if err != nil {
+		toplog.Error("ParseJSON err: %v payload: %v", err, payload)
+		return
+	}
 
 	reasonField := fields["reason"]
 	if reasonField == nil {

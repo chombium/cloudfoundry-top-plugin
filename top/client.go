@@ -24,10 +24,10 @@ import (
 	"strings"
 	"time"
 
+	"code.cloudfoundry.org/cli/v9/cf/terminal"
+	"code.cloudfoundry.org/cli/v9/plugin"
 	"github.com/Jeffail/gabs"
-	"github.com/cloudfoundry/cli/cf/terminal"
-	"github.com/cloudfoundry/cli/plugin"
-	"github.com/cloudfoundry/noaa/consumer"
+	"github.com/cloudfoundry/noaa/v2/consumer"
 	"github.com/cloudfoundry/sonde-go/events"
 	"github.com/gorilla/websocket"
 
@@ -453,7 +453,11 @@ func (c *Client) getUserScopes() ([]string, error) {
 		return nil, err
 	}
 
-	jsonScopes := jsonParsed.Search("scope").Children()
+	jsonScopes, err := jsonParsed.Search("scope").Children()
+	if err != nil {
+		toplog.Error("ParseJSON err: %v payload: %v", err, decodedAccessToken)
+		return nil, err
+	}
 
 	scopes := make([]string, 0, 5)
 	for _, scope := range jsonScopes {

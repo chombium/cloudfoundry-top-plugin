@@ -21,9 +21,9 @@ import (
 
 	// _ "net/http/pprof"
 
-	"github.com/cloudfoundry/cli/cf/terminal"
-	"github.com/cloudfoundry/cli/cf/trace"
-	"github.com/cloudfoundry/cli/plugin"
+	"code.cloudfoundry.org/cli/v9/cf/terminal"
+	"code.cloudfoundry.org/cli/v9/cf/trace"
+	"code.cloudfoundry.org/cli/v9/plugin"
 	"github.com/ecsteam/cloudfoundry-top-plugin/top"
 	"github.com/ecsteam/cloudfoundry-top-plugin/util"
 	"github.com/simonleung8/flags"

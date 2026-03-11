@@ -13,10 +13,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package main_test
+package main
 
 import (
-	"code.cloudfoundry.org/cli/util/testhelpers/pluginbuilder"
+	"code.cloudfoundry.org/cli/v9/cf/util/testhelpers/pluginbuilder"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 

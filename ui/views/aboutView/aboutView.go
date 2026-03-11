@@ -25,7 +25,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cloudfoundry/cli/plugin"
+	"code.cloudfoundry.org/cli/v9/plugin"
 
 	"github.com/ecsteam/cloudfoundry-top-plugin/eventdata"
 	"github.com/ecsteam/cloudfoundry-top-plugin/toplog"

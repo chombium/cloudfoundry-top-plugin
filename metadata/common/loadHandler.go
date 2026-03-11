@@ -21,7 +21,7 @@ import (
 
 	"github.com/ecsteam/cloudfoundry-top-plugin/toplog"
 
-	"code.cloudfoundry.org/cli/plugin"
+	"code.cloudfoundry.org/cli/v9/plugin"
 )
 
 /*

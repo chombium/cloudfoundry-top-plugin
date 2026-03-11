@@ -4,7 +4,7 @@ package fakes
 import (
 	"sync"
 
-	. "github.com/cloudfoundry/cli/cf/terminal"
+	. "code.cloudfoundry.org/cli/v9/cf/terminal"
 )
 
 type FakePrinter struct {

@@ -28,7 +28,7 @@ import (
 	"github.com/ansel1/merry"
 	termbox "github.com/nsf/termbox-go"
 
-	"github.com/cloudfoundry/cli/plugin"
+	"code.cloudfoundry.org/cli/v9/plugin"
 	"github.com/ecsteam/cloudfoundry-top-plugin/eventdata"
 	"github.com/ecsteam/cloudfoundry-top-plugin/eventrouting"
 	"github.com/ecsteam/cloudfoundry-top-plugin/toplog"
