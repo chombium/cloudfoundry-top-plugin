@@ -26,7 +26,7 @@ type AppMetadataManager struct {
 }
 
 func NewAppMetadataManager(mdGlobalManager common.MdGlobalManagerInterface) *AppMetadataManager {
-	url := "/v2/apps"
+	url := "/v3/apps"
 	mdMgr := &AppMetadataManager{}
 	mdMgr.CommonV2ResponseManager = common.NewCommonV2ResponseManager(mdGlobalManager, common.APP, url, mdMgr, false)
 	return mdMgr

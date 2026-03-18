@@ -34,8 +34,8 @@ type HostStats struct {
 
 	// If path is not found, dynamically register it to this menu levels deep in path
 	// TODO: Problem -- if the first call is to "/v2" and its dynamically registered
-	// then a subsequent call to /v2/apps" will to be added as there will be a match.
-	// However, we really do want to register /v2/apps
+	// then a subsequent call to /v3/apps" will to be added as there will be a match.
+	// However, we really do want to register /v3/apps
 	dynamicAddPathDepth int
 
 	// index of paths where the best match is first (longest path first)
@@ -110,13 +110,12 @@ func (hs *HostStats) rebuildPathIndex() {
 // findPath = "/webappa"	  => "/webappa"
 // findPath = "/webappa/"	  => "/webappa"
 // findPath = "/webappa/doc"  => "/webappa"
-//
 func (hs *HostStats) FindPathMatch(findPath string) string {
 
 	// TODO: need to make sure we take into account dynamicAddPathDepth
-	// e.g., do not return "/v2" if calling with "/v2/app" even if /v2
-	// is registered and /v2/apps is not -- we should return:
-	//		 empty match?  or "/v2/apps" even though its not in list?
+	// e.g., do not return "/v2" if calling with "/v3/app" even if /v2
+	// is registered and /v3/apps is not -- we should return:
+	//		 empty match?  or "/v3/apps" even though its not in list?
 
 	for _, path := range hs.routeIndex {
 		if strings.HasPrefix(findPath, path) {

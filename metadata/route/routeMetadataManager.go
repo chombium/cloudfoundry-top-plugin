@@ -31,7 +31,7 @@ type RouteMetadataManager struct {
 }
 
 func NewRouteMetadataManager(mdGlobalManager common.MdGlobalManagerInterface) *RouteMetadataManager {
-	url := "/v2/routes"
+	url := "/v3/routes"
 	mdMgr := &RouteMetadataManager{}
 	mdMgr.CommonV2ResponseManager = common.NewCommonV2ResponseManager(mdGlobalManager, common.ROUTE, url, mdMgr, false)
 	mdMgr.appsForRouteCache = make(map[string][]string)
@@ -141,7 +141,7 @@ func (mdMgr *RouteMetadataManager) getAppIdsForRoute(routeId string) []string {
 }
 
 func (mdMgr *RouteMetadataManager) getAppsForRoute(routeId string) ([]common.IMetadata, error) {
-	url := fmt.Sprintf("/v2/routes/%v/apps", routeId)
+	url := fmt.Sprintf("/v3/routes/%v/destinations?include=app", routeId)
 	toplog.Debug("getAppsForRoute url: %v", url)
 	return mdMgr.GetMdGlobalManager().GetAppMetadataFromUrl(url)
 }

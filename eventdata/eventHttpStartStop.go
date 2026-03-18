@@ -162,7 +162,7 @@ func (ed *EventData) httpStartStopEventForApp(msg *events.Envelope) {
 // job:"router-partition-6c9fddda6d386d1b5b54" index:"0" ip:"172.28.1.57"
 // httpStartStop:<startTimestamp:1481942228172587068 stopTimestamp:1481942228218776855
 // requestId:<low:8306249200620409206  high:5348636437173287548 >  peerType:Client method:PUT
-// uri:"api.system.laba.ecsteam.io/v2/spaces/2a7f2b63-e3f9-4e26-a73c-d3dd0be4b77f"
+// uri:"api.system.laba.ecsteam.io/v3/spaces/2a7f2b63-e3f9-4e26-a73c-d3dd0be4b77f"
 // remoteAddress:"172.28.1.51:46187" userAgent:"Mozilla/5.0" statusCode:201 contentLength:1300
 // instanceId:"a455303f-144b-4936-9483-a61bfa23b35b" 11:"" >
 func (ed *EventData) checkIfApiCall_PCF1_6(uri string) (bool, string) {
@@ -178,7 +178,7 @@ func (ed *EventData) checkIfApiCall_PCF1_6(uri string) (bool, string) {
 // job:"router-partition-72c346932f9a11cd262e" index:"0" ip:"172.28.3.57"
 // httpStartStop:<startTimestamp:1481950482140382655 stopTimestamp:1481950482175838683
 // requestId:<low:4704681661434642403 high:14399846285434694512 >  peerType:Client method:PUT
-// uri:"http://73.169.24.191, 172.28.3.51, 172.29.0.2, 172.28.3.51/v2/spaces/605f2e92-a311-4bf8-a37d-296b0a692e25"
+// uri:"http://73.169.24.191, 172.28.3.51, 172.29.0.2, 172.28.3.51/v3/spaces/605f2e92-a311-4bf8-a37d-296b0a692e25"
 // remoteAddress:"172.28.3.51:38274" userAgent:"Mozilla/5.0" statusCode:201 contentLength:1311
 // instanceId:"66a0e28b-81d7-44d6-46a4-ed46822b9b1f" 11:"" >
 //
@@ -207,7 +207,7 @@ func (ed *EventData) checkIfApiCall_PCF1_7(uri string) (bool, string) {
 // job:"router" index:"6b3af194-af76-4559-ada6-49f823d1fcfc" ip:"172.28.31.76"
 // httpStartStop:<startTimestamp:1504214133245642650 stopTimestamp:1504214133282794229
 // requestId:<low:15442731464348427596 high:16854041068462198120 > peerType:Client
-// method:PUT uri:"http://api.system.lab03.den.ecsteam.io/v2/spaces/4dbbefa5-f974-4e36-8275-1ccfddf9f04e"
+// method:PUT uri:"http://api.system.lab03.den.ecsteam.io/v3/spaces/4dbbefa5-f974-4e36-8275-1ccfddf9f04e"
 // remoteAddress:"172.28.31.250:57936" userAgent:"go-cli 6.29.0+ff886fa93.2017-07-24 / darwin"
 // statusCode:201 contentLength:1572 instanceId:"1353d169-1458-4afb-59a8-2482390513a9"
 // 15:"206.173.105.122" 15:"172.29.0.111" 15:"172.28.31.250" >
@@ -241,7 +241,7 @@ func (ed *EventData) getContainerTraffic(appStats *eventApp.AppStats, instId str
 }
 
 // A PCF API has been called -- use this to trigger reload of metadata if appropriate
-// Example: "/v2/spaces/59cde607-2cda-4e20-ab30-cc779c4026b0"
+// Example: "/v3/spaces/59cde607-2cda-4e20-ab30-cc779c4026b0"
 func (ed *EventData) pcfApiHasBeenCalled(msg *events.Envelope, apiUri string, method events.Method) {
 	toplog.Debug("API called: %v", apiUri)
 

@@ -81,7 +81,7 @@ func LoadSpaceCache(cliConnection plugin.CliConnection) {
 
 func getSpaceMetadata(cliConnection plugin.CliConnection) ([]Space, error) {
 
-	url := "/v2/spaces"
+	url := "/v3/spaces"
 	metadata := []Space{}
 
 	handleRequest := func(outputBytes []byte) (data interface{}, nextUrl string, err error) {

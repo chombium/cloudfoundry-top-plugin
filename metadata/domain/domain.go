@@ -75,7 +75,7 @@ func AddDomainMetadata(domainName string) *Domain {
 }
 
 func LoadDomainCache(cliConnection plugin.CliConnection) {
-	sharedDomains, err := getDomainMetadata(cliConnection, "/v2/shared_domains")
+	sharedDomains, err := getDomainMetadata(cliConnection, "/v3/domains")
 	if err != nil {
 		toplog.Warn("*** shared_domains metadata error: %v", err.Error())
 		return
@@ -84,7 +84,7 @@ func LoadDomainCache(cliConnection plugin.CliConnection) {
 		domain.SharedDomain = true
 	}
 
-	privateDomains, err := getDomainMetadata(cliConnection, "/v2/private_domains")
+	privateDomains, err := getDomainMetadata(cliConnection, "/v3/domains")
 	if err != nil {
 		toplog.Warn("*** private_domains metadata error: %v", err.Error())
 		return

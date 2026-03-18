@@ -22,7 +22,7 @@ import (
 )
 
 // ****************************************************************
-// The following are used used calling API: /v2/apps/APP_GUID/instances
+// The following are used used calling API: /v3/apps/APP_GUID/instances
 // ****************************************************************
 type AppInstances struct {
 	//*common.BaseMetadataItem

@@ -22,7 +22,7 @@ type SpaceQuotaMetadataManager struct {
 }
 
 func NewSpaceQuotaMetadataManager(mdGlobalManager common.MdGlobalManagerInterface) *SpaceQuotaMetadataManager {
-	url := "/v2/space_quota_definitions"
+	url := "/v3/space_quotas"
 	mdMgr := &SpaceQuotaMetadataManager{}
 	mdMgr.CommonV2ResponseManager = common.NewCommonV2ResponseManager(mdGlobalManager, common.SPACE_QUOTA, url, mdMgr, true)
 	return mdMgr

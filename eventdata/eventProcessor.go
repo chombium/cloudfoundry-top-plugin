@@ -206,42 +206,42 @@ func (ep *EventProcessor) seedSpecialRouteData() {
 	// Register all documented APIs from https://apidocs.cloudfoundry.org/249/
 	// TODO: Add a way to dynamically add level-n paths as seen during runtime
 	// I.e., pathLevel=2 on "api" host would track: /*/*
-	// E.g., /v2/apps or /v3/jobs/2323-232-2323 (only /v2/jobs would be tracked)
+	// E.g., /v3/apps or /v3/jobs/2323-232-2323 (only /v3/jobs would be tracked)
 	registerApiPaths := [...]string{
 		"/internal",
 		"/internal/bulk/apps",
 		"/internal/log_access",
-		"/v2",
-		"/v2/app_usage_events",
-		"/v2/apps",
-		"/v2/buildpacks",
-		"/v2/domains",
-		"/v2/config",
-		"/v2/events",
-		"/v2/info",
-		"/v2/jobs",
-		"/v2/quota_definitions",
-		"/v2/organizations",
-		"/v2/private_domains",
-		"/v2/resource_match",
-		"/v2/routes",
-		"/v2/route_mappings",
-		"/v2/security_groups",
-		"/v2/service_bindings",
-		"/v2/service_brokers",
-		"/v2/service_instances",
-		"/v2/service_keys",
-		"/v2/service_plan_visibilities",
-		"/v2/service_plans",
-		"/v2/service_usage_events",
-		"/v2/services",
-		"/v2/shared_domains",
-		"/v2/space_quota_definitions",
-		"/v2/spaces",
-		"/v2/stacks",
-		"/v2/user_provided_service_instances",
-		"/v2/users",
-		"/v2/syslog_drain_urls",
+		"/v3",
+		"/v3/app_usage_events",
+		"/v3/apps",
+		"/v3/buildpacks",
+		"/v3/domains",
+		"/v2/config", // no v3 equivalent
+		"/v3/audit_events",
+		"/v3/info", // might have to use v3  root - /
+		"/v3/jobs",
+		"/v3/organization_quotas",
+		"/v3/organizations",
+		"/v2/private_domains", // no v3 equivalent - domains + attr filter
+		"/v3/resource_matches",
+		"/v3/routes",
+		"/v2/route_mappings", // /v3/routes/{route_guid}/destinations
+		"/v3/security_groups",
+		"/v3/service_credential_bindings",
+		"/v3/service_brokers",
+		"/v3/service_instances",
+		"/v3/service_credential_bindings?type=app",
+		"/v2/service_plan_visibilities", // /v3/service_plans/{guid}/visibility
+		"/v3/service_plans",
+		"/v3/service_usage_events",
+		"/v3/service_offering",
+		"/v3/domains?organization_guids=null", // /v2/shared_domains",
+		"/v3/space_quotas",
+		"/v3/spaces",
+		"/v3/stacks",
+		"/v3/service_instances?type=user-provided",
+		"/v3/users",
+		"/v2/syslog_drain_urls", // /v3/service_instances?type=user-provided GET /v3/service_instances/{guid} /v3/service_credential_bindings/{guid}/details
 	}
 
 	for _, registerPath := range registerApiPaths {

@@ -139,7 +139,7 @@ func LoadCrashDataCache(cliConnection plugin.CliConnection) {
 
 func getCrashDataMetadata(cliConnection plugin.CliConnection) ([]EventData, error) {
 	timestampFormat := "2006-01-02 15:04:05-07:00"
-	urlPath := "/v2/events?q=type:app.crash&q=timestamp%%3E=%v&q=timestamp%%3C=%v"
+	urlPath := "/v3/audit_events?q=type:app.crash&q=timestamp%%3E=%v&q=timestamp%%3C=%v"
 
 	// TODO: "now" should be the timestamp of when top started
 	// so we don't end up with dumplications of crash data

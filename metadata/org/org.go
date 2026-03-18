@@ -92,7 +92,7 @@ func LoadOrgCache(cliConnection plugin.CliConnection) {
 
 func getOrgMetadata(cliConnection plugin.CliConnection) ([]Org, error) {
 
-	url := "/v2/organizations"
+	url := "/v3/organizations"
 	metadata := []Org{}
 
 	handleRequest := func(outputBytes []byte) (data interface{}, nextUrl string, err error) {

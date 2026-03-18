@@ -33,7 +33,7 @@ type AppInstanceMetadataManager struct {
 }
 
 func NewAppInstanceMetadataManager(mdGlobalManager common.MdGlobalManagerInterface) *AppInstanceMetadataManager {
-	url := "/v2/apps"
+	url := "/v3/apps"
 	mdMgr := &AppInstanceMetadataManager{}
 	mdMgr.CommonMetadataManager = common.NewCommonMetadataManager(mdGlobalManager, common.APP_INST, url, mdMgr, time.Millisecond*1000)
 	return mdMgr

@@ -401,7 +401,7 @@ func (asUI *AppDetailView) postProcessData() []*DisplayContainerStats {
 		asUI.LastCrashInfo = asUI.FindLastCrash(appStats)
 		if asUI.LastCrashInfo == nil {
 			// If we don't find last crash in container stats, last crash must have occured
-			// before top was started.  Look for last crash time in metadata (/v2/event data)
+			// before top was started.  Look for last crash time in metadata (/v3/audit_events data)
 			asUI.LastCrashInfo = crashData.FindLastCrashByApp(appStats.AppId)
 		}
 	}

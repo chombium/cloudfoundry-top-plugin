@@ -22,7 +22,7 @@ type OrgQuotaMetadataManager struct {
 }
 
 func NewOrgQuotaMetadataManager(mdGlobalManager common.MdGlobalManagerInterface) *OrgQuotaMetadataManager {
-	url := "/v2/quota_definitions"
+	url := "/v3/organization_quotas"
 	mdMgr := &OrgQuotaMetadataManager{}
 	mdMgr.CommonV2ResponseManager = common.NewCommonV2ResponseManager(mdGlobalManager, common.ORG_QUOTA, url, mdMgr, true)
 	return mdMgr

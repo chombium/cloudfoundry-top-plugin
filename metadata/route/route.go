@@ -128,7 +128,7 @@ func getAppIdsForRoute(cliConnection plugin.CliConnection, routeId string) []str
 }
 
 func getAppsForRoute(cliConnection plugin.CliConnection, routeId string) ([]common.IMetadata, error) {
-	url := fmt.Sprintf("/v2/routes/%v/apps", routeId)
+	url := fmt.Sprintf("/v3/routes/%v/destinations?include=app", routeId)
 	toplog.Debug("getAppsForRoute url: %v", url)
 	//return mdGlobalManager..GetMetadataFromUrl(cliConnection, url)
 	return nil, nil
@@ -136,7 +136,7 @@ func getAppsForRoute(cliConnection plugin.CliConnection, routeId string) ([]comm
 
 func getRouteMetadata(cliConnection plugin.CliConnection) ([]*Route, error) {
 
-	url := "/v2/routes"
+	url := "/v3/routes"
 	metadata := []*Route{}
 
 	toplog.Debug("Route>>getRouteMetadata start")

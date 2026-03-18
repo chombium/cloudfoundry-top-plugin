@@ -65,7 +65,7 @@ func LoadStackCache(cliConnection plugin.CliConnection) {
 
 func getStackMetadata(cliConnection plugin.CliConnection) ([]Stack, error) {
 
-	url := "/v2/stacks"
+	url := "/v3/stacks"
 	metadata := []Stack{}
 
 	handleRequest := func(outputBytes []byte) (data interface{}, nextUrl string, err error) {

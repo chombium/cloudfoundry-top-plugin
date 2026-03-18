@@ -16,7 +16,7 @@
 package appStatistics
 
 import (
-	"encoding/json"
+	// "encoding/json"
 	"errors"
 	"fmt"
 	"strings"
@@ -105,43 +105,47 @@ func Clear() {
 
 func getAppStatisticMetadata(cliConnection plugin.CliConnection, appId string) (map[string]*AppInstanceStatistic, error) {
 
-	url := "/v2/apps/" + appId + "/stats"
+	url := "/v3/apps/" + appId + "/processes"
 
-	output, err := common.CallAPI(cliConnection, url)
+	// GET /v3/processes/<PROCESS_GUID>/stats
+
+	processes_output, err := common.CallAPI(cliConnection, url)
 	if err != nil {
 		return nil, err
 	}
 
-	if strings.Contains(output, "error_code") {
-		if strings.Contains(output, "CF-AppStoppedStatsError") {
+	if strings.Contains(processes_output, "error_code") {
+		if strings.Contains(processes_output, "CF-AppStoppedStatsError") {
 			// This error is OK
 			return make(map[string]*AppInstanceStatistic), nil
 		} else {
-			errMsg := fmt.Sprintf("Error from API call: %v", output)
+			errMsg := fmt.Sprintf("Error from API call: %v", processes_output)
 			return nil, errors.New(errMsg)
 		}
 	}
 
-	response := make(map[string]*AppInstanceStatistic)
-	outputBytes := []byte(output)
-	err = json.Unmarshal(outputBytes, &response)
-	if err != nil {
-		toplog.Warn("*** %v unmarshal parsing output: %v", url, string(outputBytes[:]))
-		return response, err
-	}
+	toplog.Warn("\n\n\n processes %v \n\n\n", processes_output)
 
-	// Set the startTime relative to now and uptime of the container
-	now := time.Now().Truncate(time.Second)
-	for _, stat := range response {
-		// Ignore "update" field if container is in state DOWN or CRASHED as its not up
-		if stat.State == "DOWN" || stat.State == "CRASHED" {
-			stat.Stats.Uptime = 0
-		} else {
-			uptimeSeconds := stat.Stats.Uptime
-			startTime := now.Add(time.Duration(-uptimeSeconds) * time.Second)
-			stat.Stats.StartTime = &startTime
-		}
-	}
+	response := make(map[string]*AppInstanceStatistic)
+	// outputBytes := []byte(output)
+	// err = json.Unmarshal(outputBytes, &response)
+	// if err != nil {
+	// 	toplog.Warn("*** %v unmarshal parsing output: %v", url, string(outputBytes[:]))
+	// 	return response, err
+	// }
+
+	// // Set the startTime relative to now and uptime of the container
+	// now := time.Now().Truncate(time.Second)
+	// for _, stat := range response {
+	// 	// Ignore "update" field if container is in state DOWN or CRASHED as its not up
+	// 	if stat.State == "DOWN" || stat.State == "CRASHED" {
+	// 		stat.Stats.Uptime = 0
+	// 	} else {
+	// 		uptimeSeconds := stat.Stats.Uptime
+	// 		startTime := now.Add(time.Duration(-uptimeSeconds) * time.Second)
+	// 		stat.Stats.StartTime = &startTime
+	// 	}
+	// }
 
 	return response, nil
 

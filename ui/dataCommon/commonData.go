@@ -157,11 +157,11 @@ func (cd *CommonData) PostProcessData() map[string]*DisplayAppStats {
 		displayAppStats.IsolationSegmentGuid = isoSeg.Guid
 		displayAppStats.IsolationSegmentName = isoSeg.Name
 
-		// Crash count in last 1 hour (from call to /v2/events)
+		// Crash count in last 1 hour (from call to /v3/audit_events)
 		crash1hCount := crashData.FindCountSinceByApp(appId, -1*time.Hour)
 		crash1hCount = crash1hCount + appStats.Crash1hCount()
 
-		// Crash count in last 24 hours (from call to /v2/events)
+		// Crash count in last 24 hours (from call to /v3/audit_events)
 		crash24hCount := crashData.FindCountSinceByApp(appId, -24*time.Hour)
 		crash24hCount = crash24hCount + appStats.Crash24hCount()
 
